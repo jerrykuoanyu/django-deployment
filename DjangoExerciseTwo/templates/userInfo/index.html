@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!-- extend from base.html -->
+{% extends "userInfo/base.html"%}
+
+  {% block body_block %}
+  <div class="jumbotron">
+
+    <h1>Welcome</h1>
+    <!-- template filter: title -->
+    <h3>
+    {{insert_index|title}} --using title
+    </h3>
+    <h3>
+    {{insert_index|cut:"users"}} --using cut
+    </h3>
+  </div>
+
+  {% endblock %}

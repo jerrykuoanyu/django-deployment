@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- extend from base.html -->
+{% extends "userInfo/base.html"%}
+
+  {% block body_block %}
+  <div class="jumbotron">
+
+    <h1 class=" text-center">This is User list. </h1>
+    <footer class="blockquote-footer text-center">From Jerry<cite title="Source Title"> Fake Data</cite></footer>
+    <!-- <h2>
+    <a href="{% url 'userInfo:forms'%}"> Click here to add more users</a>
+    </h2>
+    <h2>
+    <a href="{% url 'admin:index'%}"> Click here to Admin</a>
+    </h2>
+    <h2>
+    <a href="{% url 'index'%}"> Click here to Home Page</a>
+    </h2> -->
+    <h2 >Here are the User List:</h2>
+    {% if users_records %}
+    <ol>
+      {% for user in users_records %}
+
+          <li>User Info:</li>
+          <ul>
+            <li>First Name: {{user.username}}</li>
+            <li>Last Name: {{user.last_name}}</li>
+            <li>Email: {{user.email}}</li>
+          </ul>
+
+      {% endfor %}
+      </ol>
+      {% else %}
+      <p>No User Data FOUND!</p>
+      {% endif%}
+
+
+      </div>
+      {% endblock %}

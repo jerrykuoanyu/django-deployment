@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static%}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "/css/master.css" %}"/>
+    <title></title>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="{% url 'index'%}">Home Page</a></li>
+
+          {% if user.is_authenticated %}
+            <li><a class="navbar-link" href="{% url 'userInfo:forms'%}">Fill the Form</a></li>
+            <li><a class="navbar-link" href="{% url 'userInfo:users'%}">User List</a></li>
+            <li><a class="navbar-link" href="{% url 'userInfo:logout'%}">Logout</a></li>
+          {% else %}
+          <li><a class="navbar-link" href="{% url 'userInfo:register'%}">Register</a></li>
+          <li><a class="navbar-link" href="{% url 'userInfo:login'%}">Login</a></li>
+          {% endif %}
+        </ul>
+
+      </div>
+
+    </nav>
+    <div class="container">
+
+      {%block body_block%}
+      <!-- anything outside of this will be ingerited if you extend -->
+      {%endblock%}
+
+    </div>
+
+  </body>
+</html>
